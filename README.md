@@ -1,4 +1,4 @@
-# BLogger
+# Blogger
 
 A [Winston](https://github.com/winstonjs/winston) logger which logs to JSON with ordered keys and error stack support.
 
