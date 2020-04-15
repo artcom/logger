@@ -1,5 +1,7 @@
 import * as Winston from "winston"
 
+export * as Winston from "winston"
+
 const logErrorProp = Winston.format(info => {
   if (info.error instanceof Error) {
     info.error = { ...info.error, message: info.error.message, stack: info.error.stack }
@@ -34,3 +36,4 @@ export function createLogger({
     transports
   })
 }
+
