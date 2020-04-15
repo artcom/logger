@@ -1,6 +1,6 @@
 {
   "name": "@artcom/logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Winston logger which logs to JSON with ordered keys and error stack support.",
   "main": "dist/main.js",
   "files": [
