@@ -1,6 +1,6 @@
 import * as Winston from "winston"
 
-export * as Winston from "winston"
+export { Winston }
 
 const logErrorProp = Winston.format(info => {
   if (info.error instanceof Error) {
