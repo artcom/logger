@@ -30,7 +30,7 @@ export function createLogger({
     format: Winston.format.combine(
       Winston.format.errors({ stack: true }),
       logErrorProp(),
-      Winston.format.timestamp(),
+      Winston.format.timestamp({ format: () => new Date().toLocaleString() }),
       reorderKeys(keyOrder),
       Winston.format.json()),
     transports
