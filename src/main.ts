@@ -9,29 +9,20 @@ const logErrorProp = Winston.format(info => {
   return info
 })
 
-const reorderKeys = Winston.format((info, keyOrder) => {
-  const orderedKeys = [...new Set([...keyOrder, ...Object.keys(info)])]
-
-  // simply delete and re-add keys to ensure order
-  orderedKeys.forEach(key => {
-    const value = info[key]
-    delete info[key]
-    info[key] = value
-  })
-
-  return info
-})
+const reorderKeys = Winston.format((info, keyOrderObj) => Object.assign({}, keyOrderObj, info))
 
 export function createLogger({
   transports = [new Winston.transports.Console({ level: "debug" })],
   keyOrder = ["timestamp", "level", "message"]
 } = {}) : Winston.Logger {
+  const keyOrderObj = keyOrder.reduce((key: string, acc: any) => ({ ...acc, [key]: null }), {})
+
   return Winston.createLogger({
     format: Winston.format.combine(
       Winston.format.errors({ stack: true }),
       logErrorProp(),
       Winston.format.timestamp({ format: () => new Date().toLocaleString() }),
-      reorderKeys(keyOrder),
+      reorderKeys(keyOrderObj),
       Winston.format.json()),
     transports
   })
