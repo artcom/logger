@@ -15,7 +15,7 @@ export function createLogger({
   transports = [new Winston.transports.Console({ level: "debug" })],
   keyOrder = ["timestamp", "level", "message"]
 } = {}) : Winston.Logger {
-  const keyOrderObj = keyOrder.reduce((key: string, acc: any) => ({ ...acc, [key]: null }), {})
+  const keyOrderObj = keyOrder.reduce((acc: any, key: string) => ({ ...acc, [key]: null }), {})
 
   return Winston.createLogger({
     format: Winston.format.combine(
