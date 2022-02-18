@@ -2,38 +2,41 @@
   "name": "@artcom/logger",
   "version": "1.4.0",
   "description": "A Winston logger which logs to JSON with ordered keys and error stack support.",
-  "main": "dist/main.js",
+  "main": "lib/main.js",
   "files": [
-    "dist/"
+    "lib/"
   ],
   "scripts": {
+    "format": "prettier --write src",
     "lint": "eslint --ext .ts src --fix",
-    "compile": "tsc",
-    "compile:watch": "tsc -w",
-    "prepublishOnly": "npm run lint && npm run compile"
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "prepublishOnly": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/artcom/logger.git"
+  },
+  "dependencies": {
+    "safe-stable-stringify": "^2.3.1",
+    "triple-beam": "^1.3.0",
+    "winston": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "@types/triple-beam": "^1.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
   },
   "license": "MIT",
   "keywords": [
     "json",
     "logger",
     "winston"
-  ],
-  "devDependencies": {
-    "@types/node": "^17.0.12",
-    "@types/triple-beam": "^1.3.2",
-    "@typescript-eslint/parser": "^5.10.1",
-    "eslint": "^8.7.0",
-    "eslint-config-artcom": "^0.11.1",
-    "eslint-plugin-import": "^2.25.4"
-  },
-  "dependencies": {
-    "safe-stable-stringify": "^2.3.1",
-    "triple-beam": "^1.3.0",
-    "typescript": "^4.5.5",
-    "winston": "^3.4.0"
-  }
+  ]
 }

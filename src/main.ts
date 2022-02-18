@@ -13,7 +13,7 @@ function resolveError(obj: any) {
     level: obj.level,
     [LEVEL]: obj[LEVEL as any] || obj.level,
     message: obj.message,
-    stack: obj.stack.split("\n")
+    stack: obj.stack.split("\n"),
   }
 }
 
@@ -28,14 +28,14 @@ function resolveErrors(obj: any) {
       ...obj,
       ...obj.message,
       message,
-      stack: stack.split("\n")
+      stack: stack.split("\n"),
     }
   }
 
   if (obj.stack) {
     return {
       ...obj,
-      stack: obj.stack.split("\n")
+      stack: obj.stack.split("\n"),
     }
   }
 
@@ -58,8 +58,8 @@ const toJson = Winston.format((info: any, keyOrderObj) => {
 
 export function createLogger({
   transports = [new Winston.transports.Console({ level: "debug" })],
-  keyOrder = ["timestamp", "level", "message"]
-} = {}) : Winston.Logger {
+  keyOrder = ["timestamp", "level", "message"],
+} = {}): Winston.Logger {
   const keyOrderObj = keyOrder.reduce((acc: any, key: string) => ({ ...acc, [key]: null }), {})
 
   return Winston.createLogger({ format: toJson(keyOrderObj), transports })
