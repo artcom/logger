@@ -51,7 +51,7 @@ const toJson = Winston.format((info: any, keyOrderObj) => {
     }
   }
 
-  info.timestamp = new Date().toISOString()
+  info.timestamp = new Date().toLocaleString()
   info[MESSAGE as any] = stringify(Object.assign({}, keyOrderObj, info))
   return info
 })
